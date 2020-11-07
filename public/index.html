@@ -20,9 +20,16 @@ var socket = io();
         console.log('Perdimos comunicación');
     });
 
+
+    socket.on ('active-bands', function(payload) {
+        console.table(payload);
+        socket.emit('active-bands', payload );
+    });
+
+
     socket.emit('mensaje1', {nombre : 'Diego'} );
 
-    socket.on('mensaje1', function(payload) {
+    socket.on('nuevo-mensaje', function(payload) {
         console.log('Escuchandos:', payload);
     });
 
